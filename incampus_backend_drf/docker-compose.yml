@@ -1,0 +1,18 @@
+version: '3.11'
+
+networks:
+  defaults:
+    driver: ${DEFAULT_NETWORK_DRIVER}
+
+services:
+  nginx:
+    image: "${DEFAULT_DOCKER_REGISTRY}/nginx:stable-alpine"
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - default

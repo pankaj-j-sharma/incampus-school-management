@@ -1,0 +1,523 @@
+<ng-template #longContent let-modal >
+
+	<div class="card shadow scrollable">
+		<div class="card-header border-0">
+		  <div class="row align-items-center">
+			<div class="col-8">
+			  <h3 class="mb-0">{{modalId}}</h3>
+			</div>
+			<div class="col-4 text-right">
+			  <button type="button" class="btn btn-sm text-secondary" (click)="modal.dismiss('Cross click')"><i class="ni ni-fat-remove"></i></button>
+			</div>
+		  </div>                          
+		</div>			
+		<!-- <div class="modal-header">
+			<h4 class="modal-title">Modal title</h4>
+			<button type="button" class="btn btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+		</div> -->
+
+		<!-- Classroom Add Update Modal Form -->
+		<div *ngIf="(modalId == 'New Classroom' || modalId=='Update Classroom')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+						<div class="pl-lg-4">
+						<div class="row">
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-username">Classroom Name</label>
+								<input type="text" id="input-classroom-name" class="form-control form-control-alternative" placeholder="Classroom Name" formControlName="name">
+							</div>
+							</div>
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-email">Location</label>
+								<input type="text" id="input-location" class="form-control form-control-alternative" placeholder="Classroom Location" formControlName="location">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-student-count">No. of Students</label>
+								<input type="text" id="input-student-count" class="form-control form-control-alternative" placeholder="0" formControlName="student_count">
+							</div>
+							</div>
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-last-name">Status</label>
+								<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Active" formControlName="status">
+							</div>
+							</div>
+						</div>
+						</div>
+						<!-- <div class="row align-items-center">
+						<div class="col-8">
+						</div>    
+						<div class="col-4 text-right">
+							<button type="submit" class="btn btn-sm bg-gradient-success text-white">Save</button>
+						</div>
+						</div> -->
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- Grade Add/Update Modal Form -->
+		<div *ngIf="(modalId == 'New Grade' || modalId=='Update Grade')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+						<div class="pl-lg-4">
+						<div class="row">
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-grade-name">Grade Name</label>
+								<input type="text" id="input-grade-name" class="form-control form-control-alternative" placeholder="Grade Name" formControlName="name">
+							</div>
+							</div>
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-admission-fees">Admission Fees</label>
+								<input type="text" id="input-admission-fees" class="form-control form-control-alternative" placeholder="0" formControlName="admission_fee">
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-hall-charges">Hall Charges</label>
+								<input type="text" id="input-hall-charges" class="form-control form-control-alternative" placeholder="0" formControlName="hall_charges">
+							</div>
+							</div>
+						</div>
+						</div>
+						<!-- <div class="row align-items-center">
+						<div class="col-8">
+						</div>    
+						<div class="col-4 text-right">
+							<button type="submit" class="btn btn-sm bg-gradient-success text-white">Save</button>
+						</div>
+						</div> -->
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+
+		
+		<!-- Subject Add/Update Modal Form -->
+		<div *ngIf="(modalId == 'New Subject' || modalId=='Update Subject')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+						<div class="pl-lg-4">
+						<div class="row">
+							<div class="col-lg-6">
+							<div class="form-group">
+								<label class="form-control-label" for="input-subject-name">Subject Name</label>
+								<input type="text" id="input-subject-name" class="form-control form-control-alternative" placeholder="Subject Name" formControlName="name">
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+
+
+		<!-- Teacher Add/Update Modal Form -->
+		<div *ngIf="(modalId == 'New Teacher' || modalId=='Update Teacher')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+						<div class="pl-lg-4">
+							<div class="row">
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-first-name">First Name</label>
+									<input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First Name" formControlName="first_name">
+								</div>
+								</div>
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-last-name">Last Name</label>
+									<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="0" formControlName="last_name">
+								</div>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="col-lg-8">
+								<div class="form-group">
+									<label class="form-control-label" for="input-email">Email</label>
+									<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email Address" formControlName="email">
+								</div>
+								</div>
+								<div class="col-lg-4">
+								<div class="form-group">
+									<label class="form-control-label" for="input-gender">Gender</label>
+									<input type="text" id="input-gender" class="form-control form-control-alternative" placeholder="0" formControlName="gender">
+								</div>
+								</div>
+							</div>	
+
+							<div class="row">
+								<div class="col-lg-12">
+								<div class="form-group">
+									<label class="form-control-label" for="input-address">Address</label>
+									<input type="text" id="input-address" class="form-control form-control-alternative" placeholder="Address" formControlName="address">
+								</div>
+								</div>
+							</div>	
+
+							<div class="row">
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-email">Contact #</label>
+									<input type="text" id="input-phone-no" class="form-control form-control-alternative" placeholder="Phone No" formControlName="phone_no">
+								</div>
+								</div>
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-username">Username</label>
+									<input type="text" id="input-username" class="form-control form-control-alternative" placeholder="0" formControlName="username">
+								</div>
+								</div>
+							</div>	
+
+							
+						</div>
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+
+
+		<!-- Student Add/Update Modal Form -->
+		<div *ngIf="(modalId == 'New Student' || modalId=='Update Student')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+						<div class="pl-lg-4">
+							<div class="row">
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-first-name">First Name</label>
+									<input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First Name" formControlName="first_name">
+								</div>
+								</div>
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-last-name">Last Name</label>
+									<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="0" formControlName="last_name">
+								</div>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="col-lg-8">
+								<div class="form-group">
+									<label class="form-control-label" for="input-email">Email</label>
+									<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email Address" formControlName="email">
+								</div>
+								</div>
+								<div class="col-lg-4">
+								<div class="form-group">
+									<label class="form-control-label" for="input-gender">Gender</label>
+									<input type="text" id="input-gender" class="form-control form-control-alternative" placeholder="0" formControlName="gender">
+								</div>
+								</div>
+							</div>	
+
+							<div class="row">
+								<div class="col-lg-12">
+								<div class="form-group">
+									<label class="form-control-label" for="input-address">Address</label>
+									<input type="text" id="input-address" class="form-control form-control-alternative" placeholder="Address" formControlName="address">
+								</div>
+								</div>
+							</div>	
+
+							<div class="row">
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-email">Contact #</label>
+									<input type="text" id="input-phone-no" class="form-control form-control-alternative" placeholder="Phone No" formControlName="phone_no">
+								</div>
+								</div>
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-username">Username</label>
+									<input type="text" id="input-username" class="form-control form-control-alternative" placeholder="0" formControlName="username">
+								</div>
+								</div>
+							</div>	
+
+							
+						</div>
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+
+		
+		<!-- Subject Route Add/Update Modal Form -->
+		<div *ngIf="(modalId == 'New Subject Route' || modalId=='Update Subject Route')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+
+						<div class="pl-lg-2 mb-lg-4">
+							<div class="row">
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-grade">Grade</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="grade" class="form-control" id="grade" (change)="onSelectionChanged('grade',$event)" formControlName="grade" >
+											 <option value="-1">Select Grade</option>
+											 <option *ngFor="let grade of allGradesDataList" [value]="grade.id" >{{grade.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-subject">Subject</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="subject" class="form-control" id="subject" (change)="onSelectionChanged('subject',$event)"  formControlName="subject">
+											 <option value="-1">Select Subject</option>
+											 <option *ngFor="let subject of allSubjectsDataList" [value]="subject.id" >{{subject.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+
+							</div>	
+						</div>
+
+						<div class="pl-lg-2">
+							<div class="row">
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-teacher">Teacher</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="teacher" class="form-control" id="teacher" (change)="onSelectionChanged('teacher',$event)"  formControlName="teacher">
+											 <option value="-1">Select Teacher</option>
+											 <option *ngFor="let teacher of allTeachersDataList" [value]="teacher.id" >{{teacher.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+								<div class="col-lg-6">
+								<div class="form-group">
+									<label class="form-control-label" for="input-subject-fee">Subject Fee</label>
+									<input type="text" id="input-subject-fee" class="form-control form-control-alternative" placeholder="0" formControlName="subject_fee">
+								</div>
+								</div>
+							</div>	
+						</div>
+						
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+
+		
+		
+		<!-- Daily Timetable Add/Update Modal Form -->
+		<div *ngIf="(modalId == 'New Timetable' || modalId=='Update Timetable')">
+			<form #customModalForm="ngForm" [formGroup]="modalForm" role="form" (ngSubmit)="submitModalForm()">
+				<div class="modal-body">
+					<div>
+
+						<div class="pl-lg-2 mb-lg-4">
+							<div class="row">
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-grade">Grade</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="grade" class="form-control" id="grade" (change)="onSelectionChanged('grade',$event)" formControlName="grade" >
+											 <option value="-1">Select Grade</option>
+											 <option *ngFor="let grade of allGradesDataList" [value]="grade.id" >{{grade.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-subject">Subject</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="subject" class="form-control" id="subject" (change)="onSelectionChanged('subject',$event)"  formControlName="subject">
+											 <option value="-1">Select Subject</option>
+											 <option *ngFor="let subject of allSubjectsDataList" [value]="subject.id" >{{subject.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+
+							</div>	
+						</div>
+
+						<div class="pl-lg-2 mb-lg-4">
+							<div class="row">
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-teacher">Teacher</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="teacher" class="form-control" id="teacher" (change)="onSelectionChanged('teacher',$event)"  formControlName="teacher">
+											 <option value="-1">Select Teacher</option>
+											 <option *ngFor="let teacher of allTeachersDataList" [value]="teacher.id" >{{teacher.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-classroom">Classroom</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="classroom" class="form-control" id="classroom" (change)="onSelectionChanged('classroom',$event)"  formControlName="classroom">
+											 <option value="-1">Select Classroom</option>
+											 <option *ngFor="let classroom of allClassroomsDataList" [value]="classroom.id" >{{classroom.name}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+							</div>	
+						</div>
+
+						<div class="pl-lg-2 mb-lg-4">
+							<div class="row">
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-schedule-day">Schedule Day</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="schedule-day" class="form-control" id="schedule-day" (change)="onSelectionChanged('schedule_day',$event)"  formControlName="schedule_day">
+											 <option value="-1">Select Day</option>
+											 <option *ngFor="let scheduleDay of allscheduleDaysList" [value]="scheduleDay" >{{scheduleDay}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-starttime">Start Time</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="start_time" class="form-control" id="start_time" (change)="onSelectionChanged('start_time',$event)"  formControlName="start_time">
+											 <option value="-1">Select Start Time</option>
+											 <option *ngFor="let scheduletime of scheduleTimeDataList" [value]="scheduletime.start_time" >{{scheduletime.start_time}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+							</div>	
+						</div>						
+
+						<div class="pl-lg-2">
+							<div class="row">
+								<div class="col-6 text-left">
+									<label class="form-control-label" for="input-endtime">End Time</label>
+									<div class="" id="divGender">
+									   <div class="col-xs-4" id="divGender1">
+										  <select name="endtime" class="form-control" id="start_time" (change)="onSelectionChanged('end_time',$event)"  formControlName="end_time">
+											 <option value="-1">Select End Time</option>
+											 <option *ngFor="let scheduletime of scheduleTimeDataList" [value]="scheduletime.end_time" >{{scheduletime.end_time}}</option>
+										  </select>
+									   </div>
+									</div>			  								  
+								</div>	
+							</div>	
+						</div>						
+
+						
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button> -->
+					<button type="submit" [disabled]="customModalForm.form.invalid" (click)="modal.close('Close click')" class="btn btn-sm bg-gradient-success text-white">Save</button>
+				</div>
+			</form>
+		</div>
+				
+		
+	</div>
+</ng-template>
+
+<!-- <button class="btn btn-outline-primary mb-2 me-2" (click)="openScrollableContent(longContent)">
+	Modal scrollable content
+</button> -->
+
+<!-- 
+<button type="button" class="btn btn-info btn-lg" (click)="openModal()">click to open</button>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Model Title</h4>
+				<button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Model body text</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+			</div>
+		</div>
+	</div>
+</div>  -->
+
+<!--model start-->
+<!-- <div class="modal fade model-lg" id="{{modalId}}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+            <div class="row justify-content-center mt-0 pt-0 pb-4">
+                <div class="two alt-two">
+                    <h1 class="heading">
+                        <span>Image Preview</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="card gallarycard">
+                <div class="row gallery"  *ngFor="let r of arrOfRows">
+                </div>           
+            </div>    
+            <div class="d-flex flex-column">
+                <div *ngFor="let r of arrOfRows" class="d-flex justify-content-start">
+                    <div *ngFor="let img of imgFileList | slice:(r*numberOfCols):(r*numberOfCols+numberOfCols) " class="d-flex flex-column" >
+                        <div class="div-img">
+                            <img *ngIf="img.path==''" class="img-fluid m-img-viewer" src="../assets/images/placeholder.jpg" alt="">				
+                            <img *ngIf="img.path!=''" class="img-fluid m-img-viewer" src="{{img.path}}" alt="">				
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--model end-->          
